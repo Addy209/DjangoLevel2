@@ -1,2 +1,2 @@
-# DjangoLevel2
-DjangoLevel2
+# Restaurant Management System
+Restaurant Management System
