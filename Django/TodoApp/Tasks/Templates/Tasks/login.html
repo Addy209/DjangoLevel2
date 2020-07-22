@@ -1,0 +1,10 @@
+{%extends 'Tasks/base.html'%}
+
+{%block body%}
+<h1 class="center" style="margin-top: 50px"> Login Here</h1>
+<form class="center" style="margin-top: 50px" method="post">
+    {%csrf_token%}
+    {{login_form.as_p}}
+    <input type="submit" class="btn btn-primary center" value="Login">
+</form>
+{%endblock%}

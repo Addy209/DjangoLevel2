@@ -1,0 +1,79 @@
+{%extends 'base.html'%}
+
+{% block body %}
+<div>
+    <h3 style="font-weight: bolder ">Top in laptop</h3>
+    <div style="display: inline-flex">
+        {% for i in laptop %}
+        <a href="{%url 'product_detail' pk=i.pk %}"><div style="border: 1px solid black; width: 35vh; margin: 10px">
+        <p style="text-align: center; padding-top: 10px"><img src="{{i.pic.url}}" height="100px" width="100px"></p>
+        <p>{{i.name}}</p>
+        <p>{{i.maker}}</p>
+        <p>{{i.model}}</p>
+        <p>{{i.price}}</p>
+        </div></a>
+        {% endfor%}
+
+    </div>
+</div>
+
+<div>
+    <h3 style="font-weight: bolder ">Top in mobile</h3>
+
+<div style="display: inline-flex">
+        {% for i in mobile %}
+
+        <a href="{%url 'product_detail' pk=i.pk %}"><div style="border: 1px solid black; width: 35vh; margin: 10px">
+        <img src="{{i.pic.url}}" height="100px" width="100px">
+        <p>{{i.name}}</p>
+        <p>{{i.maker}}</p>
+        <p>{{i.model}}</p>
+        <p>{{i.price}}</p.
+        </div></a>
+        {% endfor%}
+
+    </div>
+
+    
+</div>
+
+<div>
+    <h3 style="font-weight: bolder ">Top in earphones</h3>
+
+<div style="display: inline-flex">
+        {% for i in earphones %}
+
+        <a href="{%url 'product_detail' pk=i.pk %}"><div style="border: 1px solid black; width: 35vh; margin: 10px">
+        <img src="{{i.pic.url}}" height="100px" width="100px">
+        <p>{{i.name}}</p>
+        <p>{{i.maker}}</p>
+        <p>{{i.model}}</p>
+        <p>{{i.price}}</p.
+        </div></a>
+        {% endfor%}
+
+    </div>
+
+    
+</div>
+
+<div>
+    <h3 style="font-weight: bolder ">Top in other</h3>
+
+<div style="display: inline-flex">
+        {% for i in other %}
+
+        <a href="{%url 'product_detail' pk=i.pk %}"><div style="border: 1px solid black; width: 35vh; margin: 10px">
+        <img src="{{i.pic.url}}" height="100px" width="100px">
+        <p>{{i.name}}</p>
+        <p>{{i.maker}}</p>
+        <p>{{i.model}}</p>
+        <p>{{i.price}}</p.
+        </div></a>
+        {% endfor%}
+
+    </div>
+
+    
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+}
+
+sub {
+    margin-left: 5px;
+    color: darkred;
+}
+
+th {
+    position: sticky
+}
+
+
+th {
+    position: sticky;
+    top: 0;
+    background: darkred;
+    color: white;
+    z-index:1;
+}
+
+#line_top_x{
+    height: 500px;
+    width: 100%;
+}

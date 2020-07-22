@@ -1,0 +1,11 @@
+{%extends 'Tasks/base.html'%}
+
+{%block body%}
+<h3 class="center" style="margin-top: 60px">Are you sure about deleting <b>{{task.task}}</b>?</h3>
+<form method="post" style="margin-top: 30px" class="center">
+    {%csrf_token%}
+    <input type="submit" class="btn btn-danger" value="Delete">
+    <a href="{url 'taskdetail' task.id}"><button class="btn btn-primary">Cancel</button></a>
+</form>
+
+{%endblock%}

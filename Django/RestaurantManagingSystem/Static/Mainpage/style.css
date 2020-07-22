@@ -1,0 +1,25 @@
+#body {
+    padding-top: 70px;
+    padding-bottom: 70px;
+    margin-top: 20px
+}
+
+#center {
+    text-align: center;
+}
+
+#userform {
+    margin-left: 18%;
+}
+
+[id^="cusine"] {
+    width: 80%
+}
+
+.other {
+    width: 20%;
+}
+
+.order {
+    width: 60%;
+}

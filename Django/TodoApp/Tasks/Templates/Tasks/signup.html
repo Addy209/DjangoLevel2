@@ -1,0 +1,19 @@
+{%extends 'Tasks/base.html'%}
+
+{%block body%}
+<h1 class="center" style="margin-top: 50px"> SignUp Here</h1>
+<div>
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+    </ul>
+
+</div>
+<form method="post">
+    {%csrf_token%}
+    {{user_form.as_p}}
+    {{profile_form.as_p}}
+    <input type="submit" class="btn btn-primary center" value="Register" onclick="validate()">
+</form>
+{%endblock%}

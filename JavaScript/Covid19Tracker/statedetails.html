@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid19 Data</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+    <script src="statedetails.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <a class="navbar-brand" href="./index.html">Covid19 India Tracker</a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.html">Historical Data</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./statewise.html">Statewise Data</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="./statedetails.html">State Details</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container d-flex justify-content-center">
+        <div class="inline-form d-flex justify-content-center" style="margin: 10px">
+            <label class="label label-default"><strong>Select State:</strong></label>
+            <select class="form-control" name="states" id="states">
+
+            </select>
+            <button class="btn btn-info" id="getstatedata" style="margin-left: 10px; height: 37px">Get</button>
+        </div>
+    </div>
+    <span class="d-flex justify-content-center" id="overallerror" style="color: red"></span>
+
+    <div class="container" id="showme" style="margin-top: 15px; display: none">
+        <div>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <th>District</th>
+                    <th>Cases</th>
+                    <th>% Recovery</th>
+                </thead>
+                <tbody id="statedetailinsert">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

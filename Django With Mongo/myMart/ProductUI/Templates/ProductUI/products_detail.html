@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{%block body%}
+<div class="row">
+    <div class="col-lg-5">
+        <img src="{{products.pic.url}}" alt="" height="400px" width="400px">
+    <div style="margin-top: 15px;">
+        <button class="btn btn-info btn-lg"><i class="fa fa-shopping-cart">&nbsp;</i>Add to Cart</button>
+        <button class="btn btn-success btn-lg" style="margin-left: 15px;"><i class="fas fa-bolt">&nbsp;</i>Buy Now</button>
+    </div>
+    </div>
+    <div class="col-lg-5">
+    <h2>{{products.name}}</h2>
+    <p>{{products.comments.count}} User Reviews</p>
+        <h5>Maker: {{products.maker}}</h5>
+        <h5>Model: {{products.model}}</h5>
+        <h5><strong>₹{{products.price}}</strong></h5>
+        <input type="text" id="pin" placeholder="Pincode">
+        <a href="#" id="pincheck" style="text-decoration: none; color: darkorchid;">Check</a>
+        <p id='tell'></tr>
+        <hr>
+        <div class='well'>
+            {%if products.category == "Laptop" or products.category == "Mobile" or products.category == "Desktop" or products.category == "Smart Watch" %}
+        <table class="table table-hover">
+            <thead>
+                <th style="text-align: center;">Specifications</th>
+            </thead>
+            <tbody>
+            <tr><td>Ram:</td><td> {{products.specs.ram}}</td></tr>
+            <tr><td>Screen-Size:</td><td> {{products.specs.screen_size}}</td></tr>
+            <tr><td>Processor:</td><td> {{products.specs.processor}}</td></tr>
+            <tr><td>Inbuilt Storage:</td><td> {{products.specs.storage}}</td></tr>
+            <tr><td>Storage Type:</td><td> {{products.specs.storage_type}}</td></tr>
+            <tr><td>Battery:</td><td> {{products.specs.battery}}</td></tr>
+            {%if products.specs.no_of_sims%}
+            <tr><td>No Of Sims:</td><td> {{products.specs.no_of_sims}}</td></tr>
+            {%endif%}
+            <tr><td>Warrenty:</td><td> {{products.specs.warrenty}}</td></tr>
+
+        </tbody>
+        </table>
+            {%endif%}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <form action="{%url 'product_detail' pk=products.pk%}" method="POST">
+            {%csrf_token%}
+            {{commentForm}}
+            <input type="submit" value=" Post Comment" style="margin-top: 15px;" class="btn btn-info">
+        </form>
+        {%for i in products.comments.all %}
+        <div>
+        <p><strong>{{i.user}} says:</strong></p>
+        <p>{{i.comment}}</p>
+        <p>Commented:{{i.commented}}</p>
+
+        </div>
+        {%endfor%}
+    </div>
+</div>
+<script>
+$('#pincheck'). on('click', function(){
+var value = $('#pin').val().trim();
+    console.log(value);
+    if (value) {
+        // Create Ajax Call
+        $.ajax({
+            url: '{% url 'pincode' %}',
+            data: {
+                'pincode': value
+            },
+            dataType: 'json',
+            success: function (data) {
+                $('#tell').text('Area Serviceable')
+                },
+             error: function(){
+                $('#tell').text('Area Not Serviceable')}
+            })
+}
+})
+</script>
+{%endblock%}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Here are your tasks</h1>
+<form method="post">
+    {%csrf_token%}
+    {{form.task}}
+    <input type="submit" value="Save">
+</form>
+{% for value in val%}
+<a href="#">Delete</a>
+<a href="{%url 'update' value.id %}">Update</a>
+<p>{{value}}</p>
+{%endfor%}
+</body>
+</html>

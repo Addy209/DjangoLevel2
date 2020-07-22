@@ -1,0 +1,49 @@
+{%extends 'Tasks/base.html'%}
+
+{%block body%}
+<h1 class=" center" style="margin-top: 50px">Here are your tasks</h1>
+<div class="row" style="margin-top: 25px">
+    <div class="col-lg-3"></div>
+    <form class="form-inline" method="post">
+        {%csrf_token%}
+        <input type="text" class="form-control" style="margin-left: 50px" name="taskadded">
+        <input type="date" class="form-control" style="margin-left: 10px" name="deadline">
+        <input type="submit" class="btn btn-primary center" style="margin-left: 10px" value="Save">
+    </form>
+</div>
+<div class="row" style="margin-top: 25px">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-3" style="margin-left: 140px">
+        <table class="table center">
+            {% for task in tasks%}
+            <tr style="margin-left: 50px">
+                <td><a href="{% url 'taskdetail' task.id%}">{{task.task}}</a></td>
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+</div>
+<div class="row" style="margin-top: 25px">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-3" style="margin-left: 140px">
+        <div class="pagination">
+            <span class="step-links">
+                {% if tasks.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ tasks.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ tasks.number }} of {{ tasks.paginator.num_pages }}.
+                </span>
+
+                {% if tasks.has_next %}
+                <a href="?page={{ tasks.next_page_number }}">next</a>
+                <a href="?page={{ tasks.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+    </div>
+
+    {%endblock%}

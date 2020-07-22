@@ -1,0 +1,11 @@
+{%extends 'Tasks/base.html'%}
+
+{%block body%}
+<h1 style="margin-top: 50px">Update task</h1>
+<form method="post">
+    {%csrf_token%}
+    {{form.as_p}}
+    <input type="submit" value="Update">
+
+</form>
+{%endblock%}

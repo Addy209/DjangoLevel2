@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>Welcome to Challenge One</title>
+<script src="script.js" ></script>
+<script src="codingchallenge2.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+    <body>
+<nav class="navbar navbar-expand-sm bg-danger navbar-dark justify-content-center">
+
+  <!-- Links -->
+  <div class="continer">
+<ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="navbar-brand" href="#">Welcome to Coding Challenge One</a>
+    </li>
+</ul></nav></div>
+        <br/>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+         <label for="jMass">John's Mass&nbsp;&nbsp;</label>
+        <input type="number" max="200" id="1" class="form-control" name="jMass" onchange="clearfield()">
+             </div>
+             <div class="form-group">
+        <label for="jHeight">John's  Height</label>
+        
+        <input type="number" max="200" id="2" class="form-control" name="jHeight" onchange="clearfield()" >
+             </div>
+        <br/><div id="e1" style="color: red;"></div><br/>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+        <label for="mMass">Mark's Mass&nbsp;&nbsp;</label>
+        <input type="number" max="200" id="3" class="form-control" name="mMass" onchange="clearfield()">
+         </div>
+         <div class="form-group">
+             
+        <label for="mHeight">Mark's  Height</label>
+        
+        <input type="number" max="200" id="4" class="form-control" name="mHeight" onchange="clearfield()">
+    </div>
+        <br/><div id="e2" style="color: red;"></div>
+    
+   
+    </div></div></div>
+        
+        <center><input type="submit" onClick="calculate()" class="btn btn-primary" value="Calculate" > </center>
+        </form>
+        <div class="row">
+            <div class="col-md-2"></div>
+        <div id="fillj" class="col-md-4" style="text-align: center;"></div>
+        <div id="fillm" class="col-md-4" style="text-align: center;"></div>
+        </div>
+    </body>
+</html>

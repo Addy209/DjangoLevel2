@@ -1,0 +1,13 @@
+{%extends 'Tasks/base.html'%}
+
+{%block body%}
+<h1 class="center" style="margin-top: 50px"> {{task.task}} Details</h1>
+<div class="center" style="margin-top: 50px">
+    <p>Task: {{task.task}}</p>
+    <p>Done: {{done}}</p>
+    <p>Is Deadline Over: {{deadlineOver}}</p>
+    <p><a href="{%url 'update' task.id %}"><button class="btn btn-warning">Update</button></a>
+        <a href="{%url 'delete' task.id %}"><button class="btn btn-danger">Delete</button></a>
+    </p>
+</div>
+{%endblock%}

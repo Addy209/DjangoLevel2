@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'Mainpage/Bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'Mainpage/style.css'%}" />
+    <link rel="stylesheet" href="../../Static/Mainpage/style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <style>
+        body {
+            position: relative;
+        }
+
+    </style>
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">Rahul da Dhaba</a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#section1">Customer Info</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#section2">Customer's Order</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#section3">Customer's Cart</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#section4">Sales Report</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#section5">Find Us</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="section1" class="container-fluid" id="center" style="padding-top:70px;padding-bottom:70px;margin-top: 50px">
+        <h1 id="center">Customer Info</h1>
+        <p id="center">{{value}}</p>
+        <p id="center">
+            <form class="form-inline" method="POST" id="userform" style="margin-top: 20px">
+                {% csrf_token %}
+                {{userform}}
+                <input type="submit" class="btn btn-primary" value="Submit" style="margin-left: 30px" onclick="UserValidate()" />
+            </form>
+        </p>
+
+    </div>
+
+    <div id="section2" class="container-fluid bg-warning" style="padding-top:70px;padding-bottom:70px">
+        <h1 id="center">{{Customer}}</h1>
+        <p id="center">{{cusine}} Enjoy Your Cusine</p>
+        <div class="container">
+            <form method="GET" action="search/" class="form-inline" style="margin-top: 20px">
+                <input type="text" id="search" name="search_food" class="form-control" style="height: 50px; width: 80%;" placeholder=" Search Your Cusines here..." required>
+                <select class="form-control" id="quant" style="width: 10%; height: 50px">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <input type="button" id="addtocart" style="height: 50px; width: 10%;" value="Add to Cart" class="btn btn-primary" style="margin-top: 10px">
+            </form>
+            <div class="list-group" style="width: 80%;" id="display"></div>
+        </div>
+
+    </div>
+
+    <div id="section3" class="container-fluid bg-secondary" style="padding-top:70px;padding-bottom:70px">
+        <h1 style="text-align: center">Customer's Cart</h1>
+        <p>
+            <div class="list-group" id="switchOn" style="display: none">
+                <table class="table table-hover list-group-item">
+                    <thead>
+                        <th id="cusine">Cusine</th>
+                        <th class="other">Quantity</th>
+                        <th class="other">Price</th>
+                    </thead>
+
+                    <tbody id="insertHere">
+
+                    </tbody>
+
+
+                    <tfoot>
+                        <tr>
+                            <td id="cusine"></td>
+                            <td class="other" style="text-align: center"><strong>Total:</strong></td>
+                            <td id="price"><strong id="total"></strong></td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div class="row">
+                    <button class="btn btn-danger btn-lg" style="margin: auto; margin-top: 20px" id="clearcart">Clear Cart</button>
+                    <button class="btn btn-primary btn-lg" style="margin: auto; margin-top: 20px" id="sales">Order Now</button>
+                </div>
+            </div>
+        </p>
+    </div>
+
+    <div id="section4" class="container-fluid bg-danger" style="padding-top:70px;padding-bottom:70px">
+        <h1 id="center">Sales Report</h1>
+        <p>
+            <div class="container">
+                <div class="row">
+                    <input type="date" class="form-control" id="sdate" placeholder="Start Date..." style="height: 50px;width: 40%">
+                    <input type="date" class="form-control" id='edate' laceholder="End Date..." style="height: 50px;width: 40%">
+                    <button class="btn btn-primary btn-lg" id="reportbtn" style=" height: 50px ;width: 20%">
+                        Generate Report
+                    </button>
+                </div>
+            </div>
+            <div class="list-group" style="margin-top: 30px">
+                <table class="table table-hover list-group-item">
+                    <thead>
+                        <th class="other">Customer Name</th>
+                        <th class="order">Customer Order</th>
+                        <th class="other">Amount</th>
+                        <th class="other" onclick="aditya()">Date</th>
+                    </thead>
+                    <tbody id="recordinsert">
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th class="other"></th>
+                            <td style="width: 40%; text-align: center"><strong>
+                                    Total Earnings:
+                                </strong>
+                            </td>
+                            <td style="width: 40%"> <strong id="earning">0</strong> </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </p>
+    </div>
+    <div id="section5" class="container-fluid bg-info" style="padding-top:70px;padding-bottom:70px">
+        <h1>Find Us</h1>
+        <p>{{Name}}</p>
+        <p>{{find}}</p>
+    </div>
+    <script src="{% static 'Mainpage/script.js'%}"></script>
+</body>
+</html>

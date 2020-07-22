@@ -1,0 +1,25 @@
+{%extends 'Tasks/base.html'%}
+
+{%block body%}
+<div class="row">
+    <h1 class="center" style="margin-top: 75px">Welcome To TODO App</h1>
+</div>
+<div class="row" style="margin-top: 75px">
+    <div class="col-lg-4 center">
+        <p>
+            <div class="jumbotron">
+                <h1>SignUp</h1>
+            </div>
+            <a href="{%url 'signup'%}"><button class="btn btn-primary btn-lg">Signup</button></a>
+        </p>
+    </div>
+    <div class="col-lg-4 center">
+        <p>
+            <div class="jumbotron">
+                <h1>Login</h1>
+            </div>
+            <a href="{%url 'login'%}"><button class="btn btn-primary btn-lg">Login</button></a>
+        </p>
+    </div>
+</div>
+{%endblock%}
